@@ -7,9 +7,14 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static('app'));
+app.set('trust proxy', true);
 
 io.on('connection', (socket) => {
-  console.log('A client has connected');
+  let clientIP = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
+
+  clientIP = (clientIP === '::1') ? '127.0.0.1' : clientIP;
+
+  console.log(`User connected with IP : ${clientIP}`);
 
   socket.on('chat message', (msg) => {
     console.log('message: ' + msg);
