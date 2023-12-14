@@ -33,6 +33,18 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
   }
+
+  .connect {
+    background-color: #4caf50;
+  }
+
+  .disconnect {
+    background-color: #af4c4c;
+  }
+
+  .currentUserMessage{
+    background-color: #564caf;
+  }
   
   input[type="submit"] {
     padding: 10px;

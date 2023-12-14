@@ -20,16 +20,27 @@ io.on('connection', (socket) => {
   socket.on('setUsername', (username) => {
     userSockets[username] = socket;
     console.log(`User connected: ${username}`);
+    io.emit('user_connected', { username: username, message: 'a rejoint la conversation.' });
   });
   
-  socket.on('chat message', (data) => {
+  socket.on('user_message', (data) => {
     const username = Object.keys(userSockets).find((key) => userSockets[key] === socket);
   
     if (username) {
       console.log('message: ' + data.message);
-      io.emit('chat message', { username, message: data.message });
+      io.emit('user_message', { username, message: data.message });
     }
-  })
+  })  
+
+  socket.on('disconnect', () => {
+    const disconnectedUsername = Object.keys(userSockets).find((key) => userSockets[key] === socket);
+
+    if (disconnectedUsername) {
+      console.log(`User disconnected: ${disconnectedUsername}`);
+      io.emit('user_disconnected', { username: disconnectedUsername, message: 'a quitté la conversation.' });
+      delete userSockets[disconnectedUsername];
+    }
+  });
 });
 
 const port = process.env.PORT || 3000;
