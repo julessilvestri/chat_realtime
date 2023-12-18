@@ -26,8 +26,8 @@ ul {
   flex-grow: 1; /* Prend autant d'espace vertical que possible */
   display: flex;
   flex-direction: column; /* Affichage des éléments en colonne */
-  align-items: center; /* Centre les éléments horizontalement dans la liste */
-  justify-content: flex-start; /* Centre les éléments verticalement dans la liste en les alignant en haut */
+  align-items: flex-start; /* Alignement à gauche */
+  justify-content: flex-start;
 }
 
 li {
@@ -37,17 +37,22 @@ li {
   border-radius: 5px;
   display: flex;
   flex-direction: column; /* Affichage des éléments en colonne */
-  align-items: flex-start; /* Alignez les éléments à gauche */
   max-width: 80%; /* Limite la largeur des messages à 80% de la largeur de la fenêtre */
 }
 
 .connect,
-.disconnect {
+.disconnect,
+.currentUserMessage {
   align-self: center; /* Centre les éléments avec les classes connect et disconnect */
 }
 
-li:not(.currentUserMessage) {
-  align-self: flex-start; /* Aligne les éléments à gauche qui n'ont pas la classe currentUserMessage */
+.disconnect,
+.currentUserMessage {
+  align-self: flex-end; /* Aligne les éléments à droite qui ont la classe disconnect ou currentUserMessage */
+}
+
+li:not(.currentUserMessage):not(.connect):not(.disconnect) {
+  align-self: flex-start; /* Aligne les éléments à gauche qui n'ont pas la classe currentUserMessage, connect, ni disconnect */
 }
 
 p {
@@ -89,6 +94,7 @@ input[type="submit"] {
   border: none;
   cursor: pointer;
 }
+
 /* Style pour les messages de connexion */
 .connect {
   background-color: #28a745;
@@ -102,5 +108,4 @@ input[type="submit"] {
 .currentUserMessage {
   background-color: #007bff; /* Couleur de fond différente pour les messages de l'utilisateur actuel */
   color: #fff; /* Couleur du texte pour les messages de l'utilisateur actuel */
-  align-self: flex-end; /* Aligne l'élément à droite dans le sens transversal (horizontal) */
 }
