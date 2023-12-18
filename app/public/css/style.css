@@ -46,7 +46,6 @@ li {
   align-self: center; /* Centre les éléments avec les classes connect et disconnect */
 }
 
-.disconnect,
 .currentUserMessage {
   align-self: flex-end; /* Aligne les éléments à droite qui ont la classe disconnect ou currentUserMessage */
 }
