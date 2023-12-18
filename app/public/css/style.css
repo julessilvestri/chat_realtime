@@ -1,55 +1,111 @@
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #222; /* Couleur de fond sombre */
-    color: #fff; /* Couleur du texte clair */
-  }
-  
-  form {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  #input {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-  
-  li {
-    background-color: #333; /* Couleur de fond plus foncée pour les messages */
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
+  margin: 0;
+  padding: 0;
+  background-color: #222; /* Couleur de fond sombre */
+  color: #fff; /* Couleur du texte clair */
+  font-family: Arial, sans-serif; /* Ajout d'une police générique */
+}
 
-  .connect {
-    background-color: #4caf50;
-  }
+header {
+  background-color: #444; /* Couleur de fond de l'en-tête */
+  padding: 10px;
+  text-align: center;
+}
 
-  .disconnect {
-    background-color: #af4c4c;
-  }
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Définit une hauteur minimale de 100% de la hauteur de la fenêtre */
+}
 
-  .currentUserMessage{
-    background-color: #564caf;
-  }
-  
-  input[type="submit"] {
-    padding: 10px;
-    background-color: #4CAF50; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
-    border: none;
-    cursor: pointer;
-  }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0; /* Ajoute une marge en haut et en bas de la liste des messages */
+  overflow-y: auto; /* Permet à la liste d'être scrollable si nécessaire */
+  flex-grow: 1; /* Prend autant d'espace vertical que possible */
+  display: flex;
+  flex-direction: column; /* Affichage des éléments en colonne */
+  align-items: flex-start; /* Alignement à gauche */
+  justify-content: flex-start;
+}
+
+li {
+  background-color: #333; /* Couleur de fond plus foncée pour les messages */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* Affichage des éléments en colonne */
+  max-width: 80%; /* Limite la largeur des messages à 80% de la largeur de la fenêtre */
+}
+
+.connect,
+.disconnect,
+.currentUserMessage {
+  align-self: center; /* Centre les éléments avec les classes connect et disconnect */
+}
+
+.disconnect,
+.currentUserMessage {
+  align-self: flex-end; /* Aligne les éléments à droite qui ont la classe disconnect ou currentUserMessage */
+}
+
+li:not(.currentUserMessage):not(.connect):not(.disconnect) {
+  align-self: flex-start; /* Aligne les éléments à gauche qui n'ont pas la classe currentUserMessage, connect, ni disconnect */
+}
+
+p {
+  margin: 0; /* Supprime la marge par défaut du paragraphe */
+}
+
+p:nth-child(1) {
+  font-weight: bold; /* Applique une police en gras au premier paragraphe (nom d'utilisateur) */
+}
+
+form {
+  display: flex;
+  flex-direction: row; /* Aligne les éléments du formulaire côte à côte */
+  align-items: center;
+  justify-content: center; /* Centre le contenu horizontalement */
+  padding: 10px;
+  background-color: #444; /* Couleur de fond du formulaire */
+  position: sticky;
+  bottom: 0;
+}
+
+#form-container {
+  display: flex;
+  align-items: center;
+}
+
+#input {
+  width: 200px; /* Limite la largeur du champ de saisie */
+  margin-right: 10px; /* Ajout d'une marge entre le champ de saisie et le bouton */
+  padding: 10px;
+  font-size: 16px;
+  flex-grow: 1; /* Permet au champ de saisie de prendre autant d'espace que possible */
+}
+
+input[type="submit"] {
+  padding: 10px;
+  background-color: #4CAF50; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none;
+  cursor: pointer;
+}
+
+/* Style pour les messages de connexion */
+.connect {
+  background-color: #28a745;
+}
+
+/* Style pour les messages de déconnexion */
+.disconnect {
+  background-color: #dc3545; 
+}
+
+.currentUserMessage {
+  background-color: #007bff; /* Couleur de fond différente pour les messages de l'utilisateur actuel */
+  color: #fff; /* Couleur du texte pour les messages de l'utilisateur actuel */
+}

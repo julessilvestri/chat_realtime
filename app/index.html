@@ -9,13 +9,22 @@
 </head>
 
 <body>
-    <form action="" method="get" id="form">
-        <input type="text" id="input">
-        <input type="submit">
-    </form>
+    <header>
+        <h1>Chat Realtime</h1>
+    </header>
 
-    <ul id="messages" class="message-list"></ul>
-    
+    <div id="container">
+        <ul id="messages" class="message-list">
+        </ul>
+
+        <form action="" method="get" id="form">
+            <div id="form-container">
+                <input type="text" id="input">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="public/js/script.js"></script>
 </body>
