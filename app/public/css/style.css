@@ -41,6 +41,10 @@ li {
   max-width: 80%; /* Limite la largeur des messages à 80% de la largeur de la fenêtre */
 }
 
+li:not(.currentUserMessage) {
+  align-self: flex-start; /* Aligne les éléments à gauche qui n'ont pas la classe currentUserMessage */
+}
+
 p {
   margin: 0; /* Supprime la marge par défaut du paragraphe */
 }
