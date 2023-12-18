@@ -86,12 +86,14 @@ input[type="submit"] {
 }
 /* Style pour les messages de connexion */
 .connect {
-  background-color: #28a745; /* Couleur de fond verte pour les messages de connexion */
+  background-color: #28a745;
+  align-self: center; 
 }
 
 /* Style pour les messages de déconnexion */
 .disconnect {
-  background-color: #dc3545; /* Couleur de fond rouge pour les messages de déconnexion */
+  background-color: #dc3545; 
+  align-self: center;
 }
 
 .currentUserMessage {
