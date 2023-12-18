@@ -1,12 +1,14 @@
 const socket = io();
-
-let username = null
+let username = null;
 
 while (username == null) {
     username = prompt('Entrer un nom :');
 }
 
 socket.emit('setUsername', username);
+
+// Sélectionnez l'élément de la liste déroulante
+const connectedUsersDropdown = document.getElementById('connectedUsersDropdown');
 
 socket.on('user_connected', (data) => {
     const item = document.createElement('li');
@@ -20,6 +22,9 @@ socket.on('user_connected', (data) => {
 
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
+
+    // Mettez à jour la liste déroulante des utilisateurs connectés
+    updateConnectedUsersDropdown(data.connectedUsers);
 });
 
 socket.on('user_disconnected', (data) => {
@@ -34,6 +39,9 @@ socket.on('user_disconnected', (data) => {
 
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
+
+    // Mettez à jour la liste déroulante des utilisateurs connectés
+    updateConnectedUsersDropdown(data.connectedUsers);
 });
 
 const form = document.getElementById('form');
@@ -66,3 +74,17 @@ socket.on('user_message', (data) => {
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
 });
+
+// Fonction pour mettre à jour la liste déroulante des utilisateurs connectés
+function updateConnectedUsersDropdown(users) {
+    // Effacez les options actuelles
+    connectedUsersDropdown.innerHTML = '';
+
+    // Ajoutez chaque utilisateur comme une nouvelle option dans la liste déroulante
+    users.forEach((user) => {
+        const option = document.createElement('option');
+        option.value = user;
+        option.text = user;
+        connectedUsersDropdown.appendChild(option);
+    });
+}

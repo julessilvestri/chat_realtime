@@ -7,9 +7,31 @@ body {
 }
 
 header {
-  background-color: #444; /* Couleur de fond de l'en-tête */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
   padding: 10px;
-  text-align: center;
+}
+
+h1 {
+  margin: 0; 
+}
+
+#connectedUsersDropdown {
+  width: 150px; /* Ajustez la largeur selon vos préférences */
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 14px;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+
+#connectedUsersDropdown option {
+  background-color: #333;
+  color: #fff;
 }
 
 #container {
