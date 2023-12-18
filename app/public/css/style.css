@@ -41,6 +41,11 @@ li {
   max-width: 80%; /* Limite la largeur des messages à 80% de la largeur de la fenêtre */
 }
 
+.connect,
+.disconnect {
+  align-self: center; /* Centre les éléments avec les classes connect et disconnect */
+}
+
 li:not(.currentUserMessage) {
   align-self: flex-start; /* Aligne les éléments à gauche qui n'ont pas la classe currentUserMessage */
 }
@@ -87,13 +92,11 @@ input[type="submit"] {
 /* Style pour les messages de connexion */
 .connect {
   background-color: #28a745;
-  align-self: center; 
 }
 
 /* Style pour les messages de déconnexion */
 .disconnect {
   background-color: #dc3545; 
-  align-self: center;
 }
 
 .currentUserMessage {
