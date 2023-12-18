@@ -89,3 +89,9 @@ input[type="submit"] {
 .disconnect {
   background-color: #dc3545; /* Couleur de fond rouge pour les messages de déconnexion */
 }
+
+.currentUserMessage {
+  background-color: #007bff; /* Couleur de fond différente pour les messages de l'utilisateur actuel */
+  color: #fff; /* Couleur du texte pour les messages de l'utilisateur actuel */
+  align-self: flex-end; /* Aligne l'élément à droite dans le sens transversal (horizontal) */
+}
